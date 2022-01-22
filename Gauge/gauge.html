@@ -1,0 +1,194 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<style>
+            .Gauge {
+          width: 350px;
+          height: 300px !important;
+          margin: 0 auto;
+
+        }
+
+        .highcharts-container {
+          height: 300px !important;
+        }
+
+        .highcharts-root {
+          height: auto !important;
+        }
+
+        .highcharts-background {
+          height: auto !important;
+        }
+
+        .highcharts-plot-background {
+          height: auto !important;
+        }
+
+</style>
+
+
+
+<body>
+    <div id="Gauge" class="Gauge"></div>
+</body>
+<script>
+    Highcharts.chart('Gauge', {
+
+chart: {
+  backgroundColor: 'grey',
+  type: 'gauge',
+  plotBackgroundColor: 'grey',
+  plotBackgroundImage: null,
+  plotBorderWidth: 0,
+  plotShadow: false,
+},
+
+title: {
+  text: ''
+},
+credits: { // for removing watermark
+  enabled: false
+},
+exporting: {
+  enabled: false
+},
+
+pane: {
+  center: ['50%', '80%'],
+  startAngle: -90,
+  endAngle: 90,
+  background: [{
+    backgroundColor: {
+
+      radialGradient: {
+        cx1: 2,
+        cy: 2,
+        r: 3
+      },
+      stops: [
+        [0, 'transparent'],
+        [1, '#3F71B3']
+      ]
+    },
+    shape: 'semicircle',
+    borderWidth: 0,
+    outerRadius: '100%',
+
+  }]
+},
+
+// the value axis
+yAxis: {
+  min: 0,
+  max: 50,
+  lineColor: '#3A3A3A',
+  tickColor: '#3A3A3A',
+  minorTickColor: '#c0c0bc',
+  minorTickPosition: 'outside',
+  tickPosition: 'outside',
+  tickLength: 6,
+  minorTickInterval: 'auto',
+  tickWidth: 3,
+  minorTickLength: 8,
+  minorTickWidth: 0,
+  offset: 5, // Change
+  lineWidth: 2,
+  labels: {
+    distance: 27,
+    step: 0,
+    rotation: 0,
+    format: '{value} %',
+    style: {
+      color: 'black',
+      fontWeigth: 'normal'
+    }
+  },
+  title: {
+    text: ''
+  },
+  plotBands: [{
+    thickness: -10, // Change
+    from: 0,
+    to: 10,
+    color: '#be4042'
+  }, {
+    thickness: -10, // Change
+    from: 10,
+    to: 20,
+    color: '#b58393'
+  }, {
+    thickness: -10, // Change
+    from: 20,
+    to: 30,
+    color: '#8c99b2'
+  }, {
+    thickness: -10, // Change
+    from: 30,
+    to: 40,
+    color: '#6198e5'
+  }, {
+    thickness: -10, // Change
+    from: 40,
+    to: 50,
+    color: '#2a5ee3'
+  }]
+},
+
+plotOptions: {
+  gauge: {
+    dial: {
+      baseWidth: 1,
+      backgroundColor: 'white',
+      borderColor: 'white',
+      borderWidth: 1,
+      rearLength: 0,
+      baseLength: 95,
+      radius: 98
+    },
+    pivot: {
+      radius: 4,
+      borderWidth: 3,
+      borderColor: 'white',
+      backgroundColor: {
+        linearGradient: {
+          x1: 0,
+          y1: 0,
+          x2: 1,
+          y2: 1
+        },
+        stops: [
+          [0, 'black'],
+          [1, 'white']
+        ]
+      }
+    },
+    dataLabels: {
+      enabled: false,
+
+    },
+    wrap: false
+  }
+},
+series: [{
+  name: 'Speed',
+  data: [45],
+  tooltip: {
+    valueSuffix: ' %'
+  },
+  overshoot: 5
+}]
+
+});
+
+</script>
+</html>
